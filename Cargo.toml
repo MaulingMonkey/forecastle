@@ -1,0 +1,40 @@
+# https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name                = "forecastle"
+version             = "0.0.0-git"
+authors             = ["MaulingMonkey <git@maulingmonkey.com>"]
+edition             = "2018"
+repository          = "https://github.com/MaulingMonkey/forecastle"
+documentation       = "https://docs.rs/forecastle"
+license             = "Apache-2.0 OR MIT"
+readme              = "Readme.md"
+description         = "WIP"
+exclude             = [".vscode"]
+# keywords            = []
+# categories          = []
+
+
+
+[dependencies]
+futures             = "0.3"
+
+[target.'cfg(windows)'.dependencies]
+mcom                = "0.1"
+wchar               = "0.6"
+
+[target.'cfg(windows)'.dependencies.winapi]
+version             = "0.3"
+features = [
+    # shared
+    "d3d9",
+    "d3d9types",
+    "minwindef",
+    "windef",
+    "winerror",
+
+    # um
+    "errhandlingapi",
+    "libloaderapi",
+    "winuser",
+]
